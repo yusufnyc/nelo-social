@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 
 // Restaurant Schema
 const ReservationSchema = Schema({
-  diners: {
+  diners_id: {
     type: Array,
     required: true,
   },

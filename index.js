@@ -3,6 +3,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const InitiateMongoServer = require("./config/db")
 const { HEALTHY } = require("./config/constants")
+const createFakeData = require("./helpers/createFakeData")
 
 // Initiate Mongo Server
 InitiateMongoServer()
@@ -23,6 +24,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+// Generating fake data for db
+createFakeData()
 
 /**
  * @route - /api

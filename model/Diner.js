@@ -12,6 +12,10 @@ const DinerSchema = Schema({
     type: String,
     required: true,
   },
+  location: {
+    type: String,
+    required: true,
+  },
   vegan: {
     type: Boolean,
     default: false
@@ -20,7 +24,7 @@ const DinerSchema = Schema({
     type: Boolean,
     default: false
   },
-  glutenFree: {
+  glutenFreeDiet: {
     type: Boolean,
     default: false
   },
