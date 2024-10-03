@@ -24,7 +24,7 @@ const DinerSchema = Schema({
     type: Boolean,
     default: false
   },
-  glutenFreeDiet: {
+  gluten_free_diet: {
     type: Boolean,
     default: false
   },

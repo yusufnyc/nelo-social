@@ -12,15 +12,15 @@ const RestaurantSchema = Schema({
     type: String,
     required: true,
   },
-  tableForTwo: {
+  table_for_two: {
     type: Number,
     required: true,
   },
-  tableForFour: {
+  table_for_four: {
     type: Number,
     required: true,
   },
-  tableForSix: {
+  table_for_six: {
     type: Number,
     required: true,
   },
@@ -32,7 +32,7 @@ const RestaurantSchema = Schema({
     type: Boolean,
     default: false
   },
-  glutenFreeDiet: {
+  gluten_free_diet: {
     type: Boolean,
     default: false
   },

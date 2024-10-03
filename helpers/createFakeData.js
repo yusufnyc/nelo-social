@@ -12,7 +12,7 @@ let createFakeData = async () => {
       location: "19.4153107,-99.1804722",
       vegan: true,
       vegetarian: false,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: false,
     },
     {
@@ -20,7 +20,7 @@ let createFakeData = async () => {
       location: "19.4058242,-99.1671942",
       vegan: false,
       vegetarian: true,
-      glutenFreeDiet: true,
+      gluten_free_diet: true,
       paleo: false,
     },
     {
@@ -28,7 +28,7 @@ let createFakeData = async () => {
       location: "19.3634215,-99.1769323",
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: true,
+      gluten_free_diet: true,
       paleo: false,
     },
     {
@@ -36,7 +36,7 @@ let createFakeData = async () => {
       location: "19.3318331,-99.2078983",
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: true,
     },
     {
@@ -44,7 +44,7 @@ let createFakeData = async () => {
       location: "19.4384214,-99.2036906",
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: false,
     },
     {
@@ -52,7 +52,7 @@ let createFakeData = async () => {
       location: "19.4349474,-99.1419256",
       vegan: true,
       vegetarian: false,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: false,
     },
   ]
@@ -60,52 +60,52 @@ let createFakeData = async () => {
   const fakeRestaurants = [
     {
       name: "Lardo",
-      tableForTwo: 4,
-      tableForFour: 2,
-      tableForSix: 1,
+      table_for_two: 4,
+      table_for_four: 2,
+      table_for_six: 1,
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: true,
+      gluten_free_diet: true,
       paleo: false,
     },
     {
       name: "Panadería Rosetta",
-      tableForTwo: 3,
-      tableForFour: 2,
-      tableForSix: 0,
+      table_for_two: 3,
+      table_for_four: 2,
+      table_for_six: 0,
       vegan: false,
       vegetarian: true,
-      glutenFreeDiet: true,
+      gluten_free_diet: true,
       paleo: false,
     },
     {
       name: "Tetetlán",
-      tableForTwo: 4,
-      tableForFour: 2,
-      tableForSix: 1,
+      table_for_two: 4,
+      table_for_four: 2,
+      table_for_six: 1,
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: true,
+      gluten_free_diet: true,
       paleo: true,
     },
     {
       name: "Falling Piano Brewing Co",
-      tableForTwo: 5,
-      tableForFour: 5,
-      tableForSix: 5,
+      table_for_two: 5,
+      table_for_four: 5,
+      table_for_six: 5,
       vegan: false,
       vegetarian: false,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: false,
     },
     {
       name: "u.to.pi.a",
-      tableForTwo: 2,
-      tableForFour: 0,
-      tableForSix: 0,
+      table_for_two: 2,
+      table_for_four: 0,
+      table_for_six: 0,
       vegan: true,
       vegetarian: true,
-      glutenFreeDiet: false,
+      gluten_free_diet: false,
       paleo: false,
     },
   ]
@@ -122,7 +122,7 @@ let createFakeData = async () => {
         location: diner.location,
         vegan: diner.vegan,
         vegetarian: diner.vegetarian,
-        glutenFreeDiet: diner.glutenFreeDiet,
+        gluten_free_diet: diner.gluten_free_diet,
         paleo: diner.paleo
       })
 
@@ -140,12 +140,12 @@ let createFakeData = async () => {
     fakeRestaurants.forEach(async (restaurant) => {
       let newRestaurant = new Restaurant({
         name: restaurant.name,
-        tableForTwo: restaurant.tableForTwo,
-        tableForFour: restaurant.tableForFour,
-        tableForSix: restaurant.tableForSix,
+        table_for_two: restaurant.table_for_two,
+        table_for_four: restaurant.table_for_four,
+        table_for_six: restaurant.table_for_six,
         vegan: restaurant.vegan,
         vegetarian: restaurant.vegetarian,
-        glutenFreeDiet: restaurant.glutenFreeDiet,
+        gluten_free_diet: restaurant.gluten_free_diet,
         paleo: restaurant.paleo
       })
 
