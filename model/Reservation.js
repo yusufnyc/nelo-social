@@ -8,12 +8,12 @@ var mongoose = require('mongoose'),
 
 // Restaurant Schema
 const ReservationSchema = Schema({
-  diners_id: {
-    type: Array,
-    required: true,
-  },
   restaurant_id: {
     type: String,
+    required: true,
+  },
+  diner_ids: {
+    type: Array,
     required: true,
   },
   table_type: {
