@@ -117,6 +117,8 @@ app.get("/api/restaurants", [
 
   // check if those restaurants have a table available at that time
   let available_restaurants = []
+  let new_reservation_start = epoch_datetime;
+  let new_reservation_end = Number(epoch_datetime) + 7201; 
 
   for (let restaurant of restaurants) {
     let active_reservations_for_two = []
@@ -124,8 +126,8 @@ app.get("/api/restaurants", [
     let active_reservations_for_six = []
     if (minimum_table_size == 2) {
       active_reservations_for_two = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_two",
         restaurant_id: restaurant._id
       })
@@ -134,8 +136,8 @@ app.get("/api/restaurants", [
         continue
       }
       active_reservations_for_four = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_four",
         restaurant_id: restaurant._id
       })
@@ -144,8 +146,8 @@ app.get("/api/restaurants", [
         continue
       }
       active_reservations_for_six = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_six",
         restaurant_id: restaurant._id
       })
@@ -154,8 +156,8 @@ app.get("/api/restaurants", [
       }
     } else if (minimum_table_size == 4) {
       active_reservations_for_four = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_four",
         restaurant_id: restaurant._id
       })
@@ -164,8 +166,8 @@ app.get("/api/restaurants", [
         continue
       }
       active_reservations_for_six = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_six",
         restaurant_id: restaurant._id
       })
@@ -174,8 +176,8 @@ app.get("/api/restaurants", [
       }
     } else if (minimum_table_size == 6) {
       active_reservations_for_six = await Reservation.find({
-        start: {$lte: epoch_datetime},
-        end: {$gte: epoch_datetime + 7200},
+        start: { $lt: new_reservation_end },
+        end: { $gt: new_reservation_start },
         table_type: "table_for_six",
         restaurant_id: restaurant._id
       })
@@ -240,11 +242,13 @@ app.get("/api/reservations", [
   if (number_of_diners % 2 != 0) {
     minimum_table_size = number_of_diners + 1
   }
+  let new_reservation_start = epoch_datetime;
+  let new_reservation_end = Number(epoch_datetime) + 7201; 
 
   if (minimum_table_size == 2) {
     active_reservations_for_two = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_two",
       restaurant_id: restaurant._id
     })
@@ -253,8 +257,8 @@ app.get("/api/reservations", [
       table_type = "table_for_two"
     }
     active_reservations_for_four = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_four",
       restaurant_id: restaurant._id
     })
@@ -263,8 +267,8 @@ app.get("/api/reservations", [
       table_type = "table_for_four"
     }
     active_reservations_for_six = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_six",
       restaurant_id: restaurant._id
     })
@@ -274,8 +278,8 @@ app.get("/api/reservations", [
     }
   } else if (minimum_table_size == 4) {
     active_reservations_for_four = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_four",
       restaurant_id: restaurant._id
     })
@@ -284,8 +288,8 @@ app.get("/api/reservations", [
       table_type = "table_for_four"
     }
     active_reservations_for_six = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_six",
       restaurant_id: restaurant._id
     })
@@ -295,8 +299,8 @@ app.get("/api/reservations", [
     }
   } else if (minimum_table_size == 6) {
     active_reservations_for_six = await Reservation.find({
-      start: {$lte: epoch_datetime},
-      end: {$gte: epoch_datetime + 7200},
+      start: { $lt: new_reservation_end },
+      end: { $gt: new_reservation_start },
       table_type: "table_for_six",
       restaurant_id: restaurant._id
     })
@@ -312,7 +316,7 @@ app.get("/api/reservations", [
       diner_ids: diners_arr,
       table_type: table_type,
       start: epoch_datetime,
-      end: epoch_datetime + 7200
+      end: Number(epoch_datetime) + 7201
     })
 
     try {
