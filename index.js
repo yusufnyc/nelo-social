@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require("express")
 const { query, validationResult } = require('express-validator')
 const bodyParser = require("body-parser")
+const moment = require('moment');
 
 const InitiateMongoServer = require("./config/db")
 const { HEALTHY } = require("./config/constants")
@@ -28,16 +29,6 @@ app.use(express.json())
 
 // Generating fake data for db
 createFakeData()
-
-/**
- * @route - * CATCH ALL
- * @method - * CATCH ALL
- * @description - 404
- */app.use((req, res, next) => {
-  return res.status(404).json({
-    error: "Not Found",
-  })
-})
 
 /**
  * @route - /api
@@ -326,7 +317,8 @@ app.get("/api/reservations", [
 
     try {
       await newReservation.save()
-      return res.json({message: "Reservation created for " + epoch_datetime})
+      let date = moment(epoch_datetime * 1000);
+      return res.json({message: "Reservation created at " + restaurant.name + " for " + date.format('MMMM Do YYYY, h:mm:ss a')})
     } catch (e) {
       console.log(e)
       return res.status(400).send({errors: 'error creating new reservation'})
@@ -334,6 +326,16 @@ app.get("/api/reservations", [
   } else {
     return res.json({message: "Reservation is not available"})
   }
+})
+
+/**
+ * @route - * CATCH ALL
+ * @method - * CATCH ALL
+ * @description - 404
+ */app.use((req, res, next) => {
+  return res.status(404).json({
+    error: "Not Found",
+  })
 })
 
 // Start app
