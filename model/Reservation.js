@@ -12,6 +12,14 @@ const ReservationSchema = Schema({
     type: Array,
     required: true,
   },
+  restaurant_id: {
+    type: String,
+    required: true,
+  },
+  table_type: {
+    type: String,
+    required: true,
+  },
   start: {
     type: Number,
     required: true,
